@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isher Events — Weddings & Decor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #f8f4ef;
+      --cream-dark: #efe9e1;
+      --grey:       #6e7b8b;
+      --grey-dark:  #4a5568;
+      --charcoal:   #2c2c2c;
+      --gold:       #b89b6a;
+      --gold-light: #d4b896;
+      --white:      #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 4rem;
+      background: rgba(248, 244, 239, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184, 155, 106, 0.2);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 30px rgba(0,0,0,0.08); }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 48px;
+      width: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--charcoal);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-dark);
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      background: var(--charcoal);
+      color: var(--white) !important;
+      padding: 0.6rem 1.5rem;
+      border-radius: 2px;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s !important;
+    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--white) !important; }
+    .nav-cta::after { display: none !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #f8f4ef 0%, #ede5d8 50%, #e8ddd0 100%);
+    }
+
+    .hero-ornament {
+      position: absolute;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+    .hero-ornament-tl {
+      top: -120px; left: -120px;
+      width: 500px; height: 500px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+    }
+    .hero-ornament-br {
+      bottom: -150px; right: -150px;
+      width: 600px; height: 600px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-light);
+      padding: 0.4rem 1.2rem;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-logo {
+      width: 260px;
+      height: 260px;
+      object-fit: contain;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+      position: relative;
+      z-index: 1;
+      mix-blend-mode: multiply;
+    }
+
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--grey);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+
+    .btn-primary {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 2px solid var(--charcoal);
+      transition: all 0.3s;
+    }
+    .btn-primary:hover { background: var(--gold); border-color: var(--gold); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--charcoal);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 2px solid var(--charcoal);
+      transition: all 0.3s;
+    }
+    .btn-outline:hover { background: var(--charcoal); color: var(--white); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: fadeUp 1s 0.8s ease both;
+    }
+    .hero-scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease infinite;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+    .divider-line {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-light));
+    }
+    .divider-line.right {
+      background: linear-gradient(to left, transparent, var(--gold-light));
+    }
+    .divider-icon {
+      font-size: 1rem;
+      color: var(--gold);
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 6rem 2rem; }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      text-align: center;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--grey);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.9;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--white);
+      padding: 7rem 2rem;
+    }
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-img-wrap {
+      position: relative;
+      padding: 1.5rem 1.5rem 1.5rem 0;
+    }
+    .about-img-bg {
+      position: absolute;
+      top: 0; right: 0;
+      width: 85%;
+      height: 85%;
+      background: var(--cream-dark);
+      border-radius: 2px;
+    }
+    .about-img-main {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #c5b8a8 0%, #a09282 50%, #7a6b5d 100%);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .about-img-main svg {
+      width: 60%;
+      opacity: 0.25;
+    }
+    .about-badge-float {
+      position: absolute;
+      bottom: 2rem;
+      left: -1.5rem;
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 1.2rem 1.5rem;
+      z-index: 2;
+    }
+    .about-badge-float .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      display: block;
+      color: var(--gold);
+    }
+    .about-badge-float .label {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .about-content {}
+    .about-content .section-label,
+    .about-content .section-title { text-align: left; }
+    .about-content .section-title { margin-bottom: 1.5rem; }
+
+    .about-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--grey);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .value-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .value-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--cream-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      color: var(--gold);
+    }
+    .value-text {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--grey-dark);
+      line-height: 1.5;
+      padding-top: 0.4rem;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      background: var(--cream);
+      padding: 7rem 2rem;
+    }
+    .services-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .service-card {
+      background: var(--white);
+      padding: 3rem 2.5rem;
+      border-top: 3px solid transparent;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--cream) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .service-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--cream-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.75rem;
+      font-size: 1.4rem;
+      position: relative;
+    }
+    .service-num {
+      position: absolute;
+      top: -6px; right: -6px;
+      width: 20px; height: 20px;
+      background: var(--gold);
+      border-radius: 50%;
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0;
+    }
+    .service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+    .service-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--grey);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .service-list li {
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      color: var(--grey-dark);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .service-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    /* ── PROCESS ── */
+    .process {
+      background: var(--charcoal);
+      padding: 7rem 2rem;
+    }
+    .process .section-label { color: var(--gold); }
+    .process .section-title { color: var(--white); }
+    .process .section-body { color: rgba(255,255,255,0.6); }
+
+    .process-steps {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5% + 28px);
+      right: calc(12.5% + 28px);
+      height: 1px;
+      background: linear-gradient(to right, var(--gold-light), var(--gold), var(--gold-light));
+      opacity: 0.3;
+    }
+
+    .process-step {
+      text-align: center;
+      position: relative;
+      padding-top: 0.5rem;
+    }
+    .step-circle {
+      width: 56px;
+      height: 56px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      background: var(--charcoal);
+      position: relative;
+      z-index: 1;
+    }
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .step-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+
+    /* ── GALLERY ── */
+    .gallery {
+      background: var(--cream-dark);
+      padding: 7rem 2rem;
+    }
+    .gallery-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 240px 240px;
+      gap: 12px;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 2px;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-item:nth-child(1) { grid-column: 1/5; grid-row: 1/2; }
+    .gallery-item:nth-child(2) { grid-column: 5/9; grid-row: 1/3; }
+    .gallery-item:nth-child(3) { grid-column: 9/13; grid-row: 1/2; }
+    .gallery-item:nth-child(4) { grid-column: 1/5; grid-row: 2/3; }
+    .gallery-item:nth-child(5) { grid-column: 9/13; grid-row: 2/3; }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .gallery-item:hover .gallery-img { transform: scale(1.06); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(44,44,44,0.5);
+      opacity: 0;
+      transition: opacity 0.35s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay-icon {
+      width: 44px; height: 44px;
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+    }
+    .gallery-overlay-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .gallery-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--grey);
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      background: var(--white);
+      padding: 7rem 2rem;
+    }
+    .testimonials-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: var(--cream);
+      padding: 2.5rem;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--gold-light);
+      position: absolute;
+      top: -1rem;
+      left: 2rem;
+      line-height: 1;
+    }
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--grey);
+      line-height: 1.85;
+      margin-bottom: 1.75rem;
+      padding-top: 1.5rem;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .author-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--grey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--charcoal);
+    }
+    .author-event {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--grey);
+    }
+    .stars {
+      color: var(--gold);
+      font-size: 0.7rem;
+      margin-top: 2px;
+      letter-spacing: 2px;
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      background: var(--cream);
+      padding: 7rem 2rem;
+    }
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info .section-label,
+    .contact-info .section-title { text-align: left; }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .contact-detail-icon {
+      width: 40px; height: 40px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .contact-detail-body {}
+    .contact-detail-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .contact-detail-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--charcoal);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .social-link {
+      width: 40px; height: 40px;
+      border: 1px solid var(--gold-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--grey-dark);
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .social-link:hover {
+      background: var(--charcoal);
+      border-color: var(--charcoal);
+      color: var(--white);
+    }
+
+    /* FORM */
+    .contact-form {
+      background: var(--white);
+      padding: 3rem;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+    }
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .form-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--grey);
+      margin-bottom: 2rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.2rem;
+    }
+    .form-group.full { grid-column: 1/-1; }
+    .form-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-dark);
+      margin-bottom: 0.5rem;
+    }
+    .form-input, .form-select, .form-textarea {
+      border: 1px solid var(--cream-dark);
+      background: var(--cream);
+      padding: 0.85rem 1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color 0.25s;
+      border-radius: 0;
+      appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b89b6a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+    .form-submit {
+      width: 100%;
+      background: var(--charcoal);
+      color: var(--white);
+      border: none;
+      padding: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 0.5rem;
+    }
+    .form-submit:hover { background: var(--gold); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1e1e1e;
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .footer-logo img {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+    .footer-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.85);
+      font-style: italic;
+    }
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 2rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .footer-links a {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(184,155,106,0.3);
+      margin: 0 auto 2rem;
+    }
+    .footer-copy {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active { display: flex; }
+
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(20,16,12,0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      cursor: pointer;
+    }
+    .lightbox-img {
+      position: relative;
+      z-index: 1;
+      max-width: 90vw;
+      max-height: 86vh;
+      object-fit: contain;
+      border-radius: 2px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+      animation: lbIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes lbIn {
+      from { opacity: 0; transform: scale(0.88); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 2;
+      width: 48px; height: 48px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      line-height: 1;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.22); transform: scale(1.1); }
+    .lightbox-caption {
+      position: fixed;
+      bottom: 1.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      z-index: 2;
+      white-space: nowrap;
+    }
+
+    .gallery-item { cursor: pointer; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(1.1); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-badge-float { left: 0; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item:nth-child(n) { grid-column: auto; grid-row: auto; }
+
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 4rem 1.2rem; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .process-steps { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a class="nav-logo" href="#">
+      <img src="brand assests/ISHER EVENTS LOGO.png" alt="Isher Events" />
+      <span class="nav-logo-text">Isher Events</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#testimonials">Stories</a></li>
+      <li><a href="#contact" class="nav-cta">Inquire</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-ornament hero-ornament-tl"></div>
+    <div class="hero-ornament hero-ornament-br"></div>
+
+
+    <div class="hero-badge">Weddings &bull; Events &bull; Decor</div>
+
+    <img class="hero-logo" src="brand assests/ISHER EVENTS LOGO.png" alt="Isher Events Logo" />
+
+    <h1>Where Every Detail<br>Tells <em>Your</em> Story</h1>
+
+    <p class="hero-sub">
+      From intimate celebrations to grand occasions, we craft unforgettable moments with elegance, intention, and heart.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="#contact">Begin Your Journey</a>
+      <a class="btn-outline" href="#services">Explore Services</a>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-visual reveal">
+        <div class="about-img-wrap">
+          <div class="about-img-bg"></div>
+          <div class="about-img-main">
+            <img src="brand assests/BACKDROP - REGAL.jpeg" alt="Isher Events regal backdrop" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title">Crafting Moments <em>Worth</em> Remembering</h2>
+
+        <p class="about-text">
+          At Isher Events, we believe every celebration is a once-in-a-lifetime story waiting to be told. Founded with a passion for beauty and precision, we bring your vision to life — from the first consultation to the final flourish.
+        </p>
+        <p class="about-text">
+          Whether it's the quiet magic of an intimate wedding, the grandeur of a Sikh or South Asian ceremony, or an elegant corporate gathering — our team pours artistry and care into every detail.
+        </p>
+
+        <div class="about-values">
+          <div class="value-item">
+            <div class="value-icon">✦</div>
+            <div class="value-text">Bespoke Design</div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">✦</div>
+            <div class="value-text">Full-Service Planning</div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">✦</div>
+            <div class="value-text">Trusted Vendors</div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">✦</div>
+            <div class="value-text">Day-of Coordination</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-label reveal">What We Offer</div>
+    <h2 class="section-title reveal reveal-delay-1">Our <em>Services</em></h2>
+    <p class="section-body reveal reveal-delay-2">
+      We offer a full suite of planning and design services, tailored to make your event feel effortless and extraordinary.
+    </p>
+
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          💍
+          <span class="service-num">01</span>
+        </div>
+        <h3 class="service-title">Wedding Planning</h3>
+        <p class="service-desc">
+          End-to-end wedding management, from venue selection to your final dance. We handle every detail so you can be fully present.
+        </p>
+        <ul class="service-list">
+          <li>Full &amp; partial planning packages</li>
+          <li>Venue sourcing &amp; booking</li>
+          <li>Ceremony &amp; reception coordination</li>
+          <li>Cultural &amp; multicultural weddings</li>
+          <li>Budget management</li>
+        </ul>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">
+          🌸
+          <span class="service-num">02</span>
+        </div>
+        <h3 class="service-title">Decor &amp; Florals</h3>
+        <p class="service-desc">
+          Transforming spaces into breathtaking environments. Our design team creates lush, cohesive aesthetics tailored to your palette.
+        </p>
+        <ul class="service-list">
+          <li>Floral arrangements &amp; installations</li>
+          <li>Backdrop &amp; arch design</li>
+          <li>Table styling &amp; centrepieces</li>
+          <li>Lighting &amp; draping</li>
+          <li>Themed décor concepts</li>
+        </ul>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">
+          🥂
+          <span class="service-num">03</span>
+        </div>
+        <h3 class="service-title">Events &amp; Celebrations</h3>
+        <p class="service-desc">
+          From milestone birthdays and baby showers to corporate galas — we plan and produce gatherings that leave lasting impressions.
+        </p>
+        <ul class="service-list">
+          <li>Milestone &amp; birthday events</li>
+          <li>Baby &amp; bridal showers</li>
+          <li>Corporate &amp; social events</li>
+          <li>Engagement parties</li>
+          <li>Holiday &amp; seasonal events</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="section-label reveal">How It Works</div>
+    <h2 class="section-title reveal reveal-delay-1">The Isher <em>Experience</em></h2>
+    <p class="section-body reveal reveal-delay-2">
+      A seamless journey from your first hello to your last dance.
+    </p>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-circle">I</div>
+        <h4 class="step-title">Inquiry</h4>
+        <p class="step-desc">Reach out and tell us about your vision, date, and budget.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-circle">II</div>
+        <h4 class="step-title">Consultation</h4>
+        <p class="step-desc">We sit down together to understand your style, needs, and dreams.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-circle">III</div>
+        <h4 class="step-title">Design</h4>
+        <p class="step-desc">Our team crafts a bespoke proposal with mood boards and timelines.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-circle">IV</div>
+        <h4 class="step-title">Celebrate</h4>
+        <p class="step-desc">You enjoy every moment while we manage every detail behind the scenes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="section-label reveal">Portfolio</div>
+    <h2 class="section-title reveal reveal-delay-1">A Glimpse of Our <em>Work</em></h2>
+    <p class="section-body reveal reveal-delay-2">
+      Each event is a canvas. Here are some of the stories we've had the honour of telling.
+    </p>
+
+    <div class="gallery-grid reveal">
+      <div class="gallery-item" onclick="openLightbox('brand assests/GNSA DARBAR WALKWAY.jpeg','Anand Karaj Ceremony')">
+        <img class="gallery-img" src="brand assests/GNSA DARBAR WALKWAY.jpeg" alt="Anand Karaj ceremony aisle at Guru Nanak Sikh Academy" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">+</div>
+          <div class="gallery-overlay-label">Anand Karaj Ceremony</div>
+        </div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('brand assests/pink blossom centre pieces.jpg','Floral Centrepieces')">
+        <img class="gallery-img" src="brand assests/pink blossom centre pieces.jpg" alt="Pink cherry blossom centrepiece" style="object-position: top;" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">+</div>
+          <div class="gallery-overlay-label">Floral Centrepieces</div>
+        </div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('brand assests/SaveClip.App_469308904_18377609455110618_7008558738322780402_n.jpg','Grand Reception')">
+        <img class="gallery-img" src="brand assests/SaveClip.App_469308904_18377609455110618_7008558738322780402_n.jpg" alt="Grand reception hall with blue lighting" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">+</div>
+          <div class="gallery-overlay-label">Grand Reception</div>
+        </div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('brand assests/BACKDROP - REGAL ORNATE TILES (DARK).jpg','Luxury Backdrop')">
+        <img class="gallery-img" src="brand assests/BACKDROP - REGAL ORNATE TILES (DARK).jpg" alt="Luxury regal ornate tile backdrop" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">+</div>
+          <div class="gallery-overlay-label">Luxury Backdrop</div>
+        </div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('brand assests/ring centrepieces.jpg','Table Styling')">
+        <img class="gallery-img" src="brand assests/ring centrepieces.jpg" alt="Gold ring centrepiece with blush florals" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">+</div>
+          <div class="gallery-overlay-label">Table Styling</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-label reveal">Client Stories</div>
+    <h2 class="section-title reveal reveal-delay-1">Words from Our <em>Couples</em></h2>
+    <p class="section-body reveal reveal-delay-2">
+      Nothing means more to us than the joy of those we serve.
+    </p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <p class="testimonial-text">
+          "Isher Events made our wedding day absolutely magical. Every detail was perfect — from the florals to the lighting. We didn't have to worry about a single thing. Just pure joy."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div>
+            <div class="author-name">Amrit &amp; Harjit</div>
+            <div class="author-event">Sikh Wedding Ceremony</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <p class="testimonial-text">
+          "I had a vision in my head and honestly didn't know how to express it — the team just *got it*. The décor was beyond anything I could have imagined. Worth every penny."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">P</div>
+          <div>
+            <div class="author-name">Priya S.</div>
+            <div class="author-event">Bridal Shower &amp; Mehndi</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <p class="testimonial-text">
+          "Professional, creative, and genuinely passionate about what they do. Our anniversary gala was stunning — guests are still talking about it months later."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div>
+            <div class="author-name">Ranjit &amp; Simran K.</div>
+            <div class="author-event">25th Anniversary Gala</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title" style="text-align:left;">Let's Create Something <em>Beautiful</em></h2>
+        <p class="section-body" style="text-align:left; margin-left:0; margin-bottom:2.5rem;">
+          Ready to start planning? Fill in a few details and we'll reach out within 24 hours to schedule your complimentary consultation.
+        </p>
+
+        <div class="contact-detail reveal">
+          <div class="contact-detail-icon">✉</div>
+          <div class="contact-detail-body">
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-value">info@isherevents.com</div>
+          </div>
+        </div>
+
+        <div class="contact-detail reveal reveal-delay-1">
+          <div class="contact-detail-icon">☎</div>
+          <div class="contact-detail-body">
+            <div class="contact-detail-label">Phone</div>
+            <div class="contact-detail-value">+44 7459 456620</div>
+          </div>
+        </div>
+
+        <div class="contact-detail reveal reveal-delay-2">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-body">
+            <div class="contact-detail-label">Service Area</div>
+            <div class="contact-detail-value">West London &amp; Surrounding Areas</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:0.85rem; font-style:italic; color:var(--grey); margin-top:0.2rem;">incl. Guru Nanak Sikh Academy &amp; beyond</div>
+          </div>
+        </div>
+
+        <div class="social-links reveal reveal-delay-3">
+          <a class="social-link" href="https://www.instagram.com/isherevents" target="_blank" rel="noopener" title="Instagram @isherevents">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+          <span style="font-family:'Cormorant Garamond',serif; font-size:0.85rem; font-style:italic; color:var(--grey); padding-top:0.6rem;">@isherevents — coming soon</span>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <h3 class="form-title">Start Your Inquiry</h3>
+        <p class="form-subtitle">Complimentary consultation included with all inquiries.</p>
+        <form id="inquiryForm" action="https://formspree.io/f/xrevqnlv" method="POST" onsubmit="handleSubmit(event)">
+          <input type="hidden" name="_subject" value="New Inquiry — Isher Events" />
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <input class="form-input" type="text" name="first_name" placeholder="Your first name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input class="form-input" type="text" name="last_name" placeholder="Your last name" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input class="form-input" type="email" name="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input class="form-input" type="tel" name="phone" placeholder="+44 ____ ______" />
+            </div>
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Type of Event</label>
+            <select class="form-select form-input" name="event_type">
+              <option value="" disabled selected>Select event type...</option>
+              <option>Wedding — Full Planning</option>
+              <option>Wedding — Partial Planning</option>
+              <option>Wedding — Day-of Coordination</option>
+              <option>Decor &amp; Florals Only</option>
+              <option>Engagement / Proposal</option>
+              <option>Bridal Shower / Mehndi</option>
+              <option>Birthday Celebration</option>
+              <option>Corporate Event</option>
+              <option>Other Celebration</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Event Date</label>
+              <input class="form-input" type="date" name="event_date" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Approximate Guest Count</label>
+              <input class="form-input" type="text" name="guest_count" placeholder="e.g. 150" />
+            </div>
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Tell Us About Your Vision</label>
+            <textarea class="form-textarea" name="message" placeholder="Share anything that inspires you — your style, theme, must-haves, or any details about your event..."></textarea>
+          </div>
+          <button class="form-submit" type="submit">Send My Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="brand assests/ISHER EVENTS LOGO.png" alt="Isher Events" />
+      <span class="footer-logo-text">Isher Events</span>
+    </div>
+    <p class="footer-tagline">Weddings &bull; Decor &bull; Celebrations</p>
+
+    <nav class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonials">Stories</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="footer-divider"></div>
+    <p class="footer-copy">&copy; 2025 Isher Events. All rights reserved. Crafted with love.</p>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close image">&#x2715;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <script>
+    // Sticky nav shadow
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Lightbox
+    const lightbox     = document.getElementById('lightbox');
+    const lightboxImg  = document.getElementById('lightboxImg');
+    const lightboxCap  = document.getElementById('lightboxCaption');
+
+    function openLightbox(src, caption) {
+      lightboxImg.src = src;
+      lightboxImg.alt = caption;
+      lightboxCap.textContent = caption;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxBackdrop').addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    // Form submit — sends to info@isherevents.com via Formspree
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn  = form.querySelector('.form-submit');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          btn.textContent = 'Inquiry sent! We\'ll be in touch within 24 hours.';
+          btn.style.background = '#b89b6a';
+          form.reset();
+        } else {
+          btn.textContent = 'Something went wrong — please email us directly.';
+          btn.style.background = '#8b4a4a';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Something went wrong — please email us directly.';
+        btn.style.background = '#8b4a4a';
+        btn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>
