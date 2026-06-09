@@ -114,7 +114,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 8rem 2rem 5rem;
+      padding: 10rem 2rem 5rem;
       position: relative;
       overflow: hidden;
       background: linear-gradient(160deg, #f8f4ef 0%, #ede5d8 50%, #e8ddd0 100%);
@@ -153,12 +153,12 @@
     .hero-logo {
       width: 260px;
       height: 260px;
-      object-fit: contain;
+      object-fit: cover;
+      border-radius: 50%;
       margin-bottom: 2.5rem;
       animation: fadeUp 0.8s 0.1s ease both;
       position: relative;
       z-index: 1;
-      mix-blend-mode: multiply;
     }
 
 
@@ -1046,7 +1046,7 @@
 
     @media (max-width: 600px) {
       section { padding: 4rem 1.2rem; }
-      .hero { padding: 7rem 1.5rem 4rem; }
+      .hero { padding: 9rem 1.5rem 4rem; }
       .process-steps { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: 1fr; }
     }
