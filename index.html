@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Isher Events — Weddings & Decor</title>
+  <meta name="description" content="Isher Events provides bespoke wedding and event decor, florals, planning and coordination across West London and surrounding areas." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -648,79 +649,6 @@
       color: var(--grey);
     }
 
-    /* ── TESTIMONIALS ── */
-    .testimonials {
-      background: var(--white);
-      padding: 7rem 2rem;
-    }
-    .testimonials-grid {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-    .testimonial-card {
-      background: var(--cream);
-      padding: 2.5rem;
-      position: relative;
-    }
-    .testimonial-card::before {
-      content: '\201C';
-      font-family: 'Playfair Display', serif;
-      font-size: 5rem;
-      color: var(--gold-light);
-      position: absolute;
-      top: -1rem;
-      left: 2rem;
-      line-height: 1;
-    }
-    .testimonial-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--grey);
-      line-height: 1.85;
-      margin-bottom: 1.75rem;
-      padding-top: 1.5rem;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .author-avatar {
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      background: var(--grey);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      color: var(--white);
-      flex-shrink: 0;
-    }
-    .author-name {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      color: var(--charcoal);
-    }
-    .author-event {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.85rem;
-      font-style: italic;
-      color: var(--grey);
-    }
-    .stars {
-      color: var(--gold);
-      font-size: 0.7rem;
-      margin-top: 2px;
-      letter-spacing: 2px;
-    }
-
     /* ── CONTACT ── */
     .contact {
       background: var(--cream);
@@ -766,6 +694,11 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1rem;
       color: var(--charcoal);
+    }
+    .contact-detail-value a {
+      color: inherit;
+      text-decoration-color: var(--gold-light);
+      text-underline-offset: 3px;
     }
 
     .social-links {
@@ -1024,7 +957,8 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
+      .nav-links { gap: 0; }
+      .nav-links li:not(:last-child) { display: none; }
 
       .about-inner { grid-template-columns: 1fr; gap: 3rem; }
       .about-badge-float { left: 0; }
@@ -1039,7 +973,6 @@
       }
       .gallery-item:nth-child(n) { grid-column: auto; grid-row: auto; }
 
-      .testimonials-grid { grid-template-columns: 1fr; }
       .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
       .form-row { grid-template-columns: 1fr; }
     }
@@ -1064,7 +997,6 @@
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#testimonials">Stories</a></li>
       <li><a href="#contact" class="nav-cta">Inquire</a></li>
     </ul>
   </nav>
@@ -1287,59 +1219,6 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="testimonials" id="testimonials">
-    <div class="section-label reveal">Client Stories</div>
-    <h2 class="section-title reveal reveal-delay-1">Words from Our <em>Couples</em></h2>
-    <p class="section-body reveal reveal-delay-2">
-      Nothing means more to us than the joy of those we serve.
-    </p>
-
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal">
-        <p class="testimonial-text">
-          "Isher Events made our wedding day absolutely magical. Every detail was perfect — from the florals to the lighting. We didn't have to worry about a single thing. Just pure joy."
-        </p>
-        <div class="testimonial-author">
-          <div class="author-avatar">A</div>
-          <div>
-            <div class="author-name">Amrit &amp; Harjit</div>
-            <div class="author-event">Sikh Wedding Ceremony</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card reveal reveal-delay-1">
-        <p class="testimonial-text">
-          "I had a vision in my head and honestly didn't know how to express it — the team just *got it*. The décor was beyond anything I could have imagined. Worth every penny."
-        </p>
-        <div class="testimonial-author">
-          <div class="author-avatar">P</div>
-          <div>
-            <div class="author-name">Priya S.</div>
-            <div class="author-event">Bridal Shower &amp; Mehndi</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card reveal reveal-delay-2">
-        <p class="testimonial-text">
-          "Professional, creative, and genuinely passionate about what they do. Our anniversary gala was stunning — guests are still talking about it months later."
-        </p>
-        <div class="testimonial-author">
-          <div class="author-avatar">R</div>
-          <div>
-            <div class="author-name">Ranjit &amp; Simran K.</div>
-            <div class="author-event">25th Anniversary Gala</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="contact-inner">
@@ -1354,7 +1233,7 @@
           <div class="contact-detail-icon">✉</div>
           <div class="contact-detail-body">
             <div class="contact-detail-label">Email</div>
-            <div class="contact-detail-value">info@isherevents.com</div>
+            <div class="contact-detail-value"><a href="mailto:info@isherevents.com">info@isherevents.com</a></div>
           </div>
         </div>
 
@@ -1362,7 +1241,7 @@
           <div class="contact-detail-icon">☎</div>
           <div class="contact-detail-body">
             <div class="contact-detail-label">Phone</div>
-            <div class="contact-detail-value">+44 7459 456620</div>
+            <div class="contact-detail-value"><a href="tel:+447459456620">+44 7459 456620</a></div>
           </div>
         </div>
 
@@ -1379,7 +1258,7 @@
           <a class="social-link" href="https://www.instagram.com/isherevents" target="_blank" rel="noopener" title="Instagram @isherevents">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
           </a>
-          <span style="font-family:'Cormorant Garamond',serif; font-size:0.85rem; font-style:italic; color:var(--grey); padding-top:0.6rem;">@isherevents — coming soon</span>
+          <span style="font-family:'Cormorant Garamond',serif; font-size:0.85rem; font-style:italic; color:var(--grey); padding-top:0.6rem;">Follow @isherevents</span>
         </div>
       </div>
 
@@ -1390,27 +1269,27 @@
           <input type="hidden" name="_subject" value="New Inquiry — Isher Events" />
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">First Name</label>
-              <input class="form-input" type="text" name="first_name" placeholder="Your first name" required />
+              <label class="form-label" for="first_name">First Name</label>
+              <input class="form-input" id="first_name" type="text" name="first_name" placeholder="Your first name" required />
             </div>
             <div class="form-group">
-              <label class="form-label">Last Name</label>
-              <input class="form-input" type="text" name="last_name" placeholder="Your last name" required />
+              <label class="form-label" for="last_name">Last Name</label>
+              <input class="form-input" id="last_name" type="text" name="last_name" placeholder="Your last name" required />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Email</label>
-              <input class="form-input" type="email" name="email" placeholder="your@email.com" required />
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" id="email" type="email" name="email" placeholder="your@email.com" required />
             </div>
             <div class="form-group">
-              <label class="form-label">Phone</label>
-              <input class="form-input" type="tel" name="phone" placeholder="+44 ____ ______" />
+              <label class="form-label" for="phone">Phone</label>
+              <input class="form-input" id="phone" type="tel" name="phone" placeholder="+44 ____ ______" />
             </div>
           </div>
           <div class="form-group full">
-            <label class="form-label">Type of Event</label>
-            <select class="form-select form-input" name="event_type">
+            <label class="form-label" for="event_type">Type of Event</label>
+            <select class="form-select form-input" id="event_type" name="event_type">
               <option value="" disabled selected>Select event type...</option>
               <option>Wedding — Full Planning</option>
               <option>Wedding — Partial Planning</option>
@@ -1425,17 +1304,17 @@
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Event Date</label>
-              <input class="form-input" type="date" name="event_date" />
+              <label class="form-label" for="event_date">Event Date</label>
+              <input class="form-input" id="event_date" type="date" name="event_date" />
             </div>
             <div class="form-group">
-              <label class="form-label">Approximate Guest Count</label>
-              <input class="form-input" type="text" name="guest_count" placeholder="e.g. 150" />
+              <label class="form-label" for="guest_count">Approximate Guest Count</label>
+              <input class="form-input" id="guest_count" type="text" name="guest_count" placeholder="e.g. 150" />
             </div>
           </div>
           <div class="form-group full">
-            <label class="form-label">Tell Us About Your Vision</label>
-            <textarea class="form-textarea" name="message" placeholder="Share anything that inspires you — your style, theme, must-haves, or any details about your event..."></textarea>
+            <label class="form-label" for="message">Tell Us About Your Vision</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Share anything that inspires you — your style, theme, must-haves, or any details about your event..."></textarea>
           </div>
           <button class="form-submit" type="submit">Send My Inquiry</button>
         </form>
@@ -1455,12 +1334,11 @@
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#gallery">Gallery</a>
-      <a href="#testimonials">Stories</a>
       <a href="#contact">Contact</a>
     </nav>
 
     <div class="footer-divider"></div>
-    <p class="footer-copy">&copy; 2025 Isher Events. All rights reserved. Crafted with love.</p>
+    <p class="footer-copy">&copy; 2026 Isher Events. All rights reserved. Crafted with love.</p>
   </footer>
 
   <!-- LIGHTBOX -->
